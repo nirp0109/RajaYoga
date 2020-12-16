@@ -1,8 +1,10 @@
 package com.my.rajayoga;
 
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
+import androidx.palette.graphics.Palette;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,7 +12,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -20,11 +25,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.ConsoleMessage;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,7 +49,7 @@ import java.util.Date;
  */
 public class FullscreenActivity extends AppCompatActivity {
 
-    private View mContentView;
+    private WebView mContentView;
     private GestureDetectorCompat mDetector;
     private int day;
     private String urlStr = null;
@@ -47,38 +60,49 @@ public class FullscreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        final ProgressDialog pd = ProgressDialog.show(FullscreenActivity.this, "", getString(R.string.loading_indicator),true);
         setContentView(R.layout.activity_fullscreen);
-        mContentView = findViewById(R.id.fullscreen_content);
+        mContentView = (WebView)findViewById(R.id.fullscreen_content);
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-        WebSettings settings = ((WebView) mContentView).getSettings();
+        WebSettings settings = mContentView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(true);
-        ((WebView)mContentView).setWebViewClient(new WebViewClient(){
-                                                    @Override
-                                                     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
+        mContentView.addJavascriptInterface(new CallBackFormJS(this),"AndroidCallback");
+        mContentView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                Log.d("WebView", consoleMessage.message());
+                return true;
+            }
+        });
+        mContentView.setWebViewClient(new WebViewClient() {
+                                                      @Override
+                                                      public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 //                                                        if(FullscreenActivity.this!=null && !FullscreenActivity.this.isFinishing()) {
 //                                                            urlStr = request.getUrl().toString();
 //                                                            pd.show();
 //                                                            view.loadUrl(request.getUrl().toString());
 //                                                        }
-                                                         return false;
-                                                    }
+                                                          return false;
+                                                      }
 
-                                                     @Override
-                                                     public void onPageFinished(WebView view, String url) {
+                                                      @Override
+                                                      public void onPageFinished(WebView view, String url) {
 //                                                         if(pd!=null && pd.isShowing() && FullscreenActivity.this!=null && !FullscreenActivity.this.isFinishing()) {
 //                                                             pd.dismiss();
 //                                                         }
 //                                                         super.onPageFinished(view, url);
-                                                     }
+                                                      }
 
-                                                     @Override
-                                                     public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                                                         urlStr = url;
-                                                         super.onPageStarted(view, url, favicon);
-                                                     }
-                                                 }
+                                                      @Override
+                                                      public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                                                          urlStr = url;
+                                                          super.onPageStarted(view, url, favicon);
+                                                      }
+
+
+                                                  }
         );
-        ((WebView)mContentView).setOnTouchListener(new View.OnTouchListener(){
+        ((WebView) mContentView).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 //analyze gesture
@@ -93,11 +117,11 @@ public class FullscreenActivity extends AppCompatActivity {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String format = sdf.format(date);
-        day = Integer.parseInt(format.substring(0,2));
+        day = Integer.parseInt(format.substring(0, 2));
         registerNotification();
         updateCurrentDateAsVisted(format);
 
-        ((WebView)mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day"+day+".html&wait=10000");
+        ((WebView) mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day" + day + ".html&wait=10000");
 //        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
 //        Toast toast = Toast.makeText(this, storage.getString("last", "l") + storage.getBoolean("notify", false) + storage.getString("signature", "s"), Toast.LENGTH_LONG);
 //        toast.show();
@@ -107,16 +131,16 @@ public class FullscreenActivity extends AppCompatActivity {
         SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
         boolean notify = storage.getBoolean("notify", true);
         //since register before update date see if created otherwise result is last
-        if(notify) {
+        if (notify) {
             Context context = this;
-            int hour = Integer.parseInt(storage.getString("hour","7"));
+            int hour = Integer.parseInt(storage.getString("hour", "7"));
             scheduleAlaramSpecficHourInEveryDay(context, hour);
         }
     }
 
     public static void scheduleAlaramSpecficHourInEveryDay(Context context, int hour) {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        int interval = 1000* 60 * 60 * 24;
+        int interval = 1000 * 60 * 60 * 24;
         /* Set the alarm to start at 7 AM */
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -135,7 +159,7 @@ public class FullscreenActivity extends AppCompatActivity {
         SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
         String string = storage.getString("last", "last");
         SharedPreferences.Editor edit = storage.edit();
-        if("last".equalsIgnoreCase(string)) {
+        if ("last".equalsIgnoreCase(string)) {
             edit.putBoolean("notify", true);
             edit.putString("hour", "7");
         }
@@ -161,7 +185,7 @@ public class FullscreenActivity extends AppCompatActivity {
                 openSettingActivity();
                 return true;
             case R.id.action_about:
-                Intent intent = new Intent(this,AboutActivity.class);
+                Intent intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
                 return true;
 
@@ -174,7 +198,7 @@ public class FullscreenActivity extends AppCompatActivity {
      * open screen that let the user make the settings
      */
     private void openSettingActivity() {
-        Intent intent = new Intent(this,SettingsActivity.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
@@ -186,12 +210,12 @@ public class FullscreenActivity extends AppCompatActivity {
          **/
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    if (((WebView)mContentView).canGoBack()) {
-                        ((WebView)mContentView).goBack();
-                    } else {
-                        finish();
-                    }
-                    return true;
+                if (((WebView) mContentView).canGoBack()) {
+                    ((WebView) mContentView).goBack();
+                } else {
+                    finish();
+                }
+                return true;
             }
 
         }
@@ -201,7 +225,7 @@ public class FullscreenActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
- }
+    }
 
 
     /**
@@ -212,7 +236,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
         @Override
         public boolean onDown(MotionEvent event) {
-            Log.d(DEBUG_TAG,"onDown: " + event.toString());
+            Log.d(DEBUG_TAG, "onDown: " + event.toString());
             return true;
         }
 
@@ -224,32 +248,73 @@ public class FullscreenActivity extends AppCompatActivity {
              * velocity of x is more than of y and distance is at least quarter of screen
              * width
              **/
-            if(urlStr!=null && urlStr.indexOf("android_asset/html/day")==-1) {//external link don't change page on swap
+            if (urlStr != null && urlStr.indexOf("android_asset/html/day") == -1) {//external link don't change page on swap
                 return true;
             }
-            if(Math.abs(velocityX) >  Math.abs(velocityY)) {
+            if (Math.abs(velocityX) > Math.abs(velocityY)) {
                 float width;
                 width = Math.abs(event2.getX() - event1.getX());
                 int viewWidth = mContentView.getWidth();
-                if(width > viewWidth/4) {
+                if (width > viewWidth / 4) {
                     //according to direction change day
-                    if(event2.getX() - event1.getX()>0) {
+                    if (event2.getX() - event1.getX() > 0) {
                         day = day + 1;
                     } else {
-                        day = day -1;
+                        day = day - 1;
                     }
                     day = (31 + day) % 31;
-                    if(day ==0) {
+                    if (day == 0) {
                         day = 31;
                     }
                     //load with new page
-                    ((WebView)mContentView).loadUrl("file:///android_asset/html/day"+day+".html");
-               }
+                    ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
+                }
             }
             return true;
         }
     }
 
+    public void createPaletteAsync(Bitmap bitmap) {
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            public void onGenerated(Palette p) {
+                Palette.Swatch darkVibrantSwatch = p.getDarkVibrantSwatch();
+                if(darkVibrantSwatch!=null) {
+                    float[] rr = darkVibrantSwatch.getHsl();
+                    mContentView.evaluateJavascript("javascript:updateHeaders("+rr[0]+","+ rr[1] +","+rr[2]+");",null);
+                }
+            }
+        });
+    }
 
+    public  Bitmap getBitmapFromAsset(String filePath) {
+        AssetManager assetManager = getAssets();
+
+        InputStream istr;
+        Bitmap bitmap = null;
+        try {
+            istr = assetManager.open(filePath);
+            bitmap = BitmapFactory.decodeStream(istr);
+        } catch (IOException e) {
+            Log.e("getBitmapFromAsset",e.getLocalizedMessage());
+            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+        }
+
+        return bitmap;
+    }
+
+    class CallBackFormJS {
+        FullscreenActivity activity = null;
+        public CallBackFormJS(FullscreenActivity activity) {
+            this.activity = activity;
+        }
+
+        @JavascriptInterface
+        public void getImageName(String name) {
+            int index = name.lastIndexOf("/");
+            String fileName = "html/App_Pic"+name.substring(index);
+            Bitmap bitmapFromAsset = getBitmapFromAsset(fileName);
+            createPaletteAsync(bitmapFromAsset);
+        }
+    }
 
 }

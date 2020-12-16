@@ -25,7 +25,7 @@ public class WakeupReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // an Intent broadcast.
-        Date date = new Date();
+       Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String format = sdf.format(date);
         SharedPreferences storage = context.getSharedPreferences("storage", Context.MODE_PRIVATE);

@@ -1,8 +1,19 @@
 window.onscroll = function() {myFunction()};
-
+images = document.getElementsByTagName("img");
+AndroidCallback.getImageName(images[0].src);
 var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
+console.log("This is a test");
+var headerColor = 0;
+function updateHeaders(num1, num2, num3) {
+    headers2 = document.getElementsByTagName("h2");
+    for (i = 0; i < headers2.length; i++) {
+        headers2[i].style.color = "hsl("+Math.floor(num1)+","+Math.floor(num2*100)+"%,"+Math.floor(num3*100)+"%)";
+        headerColor = "hsl("+Math.floor(num1)+","+Math.floor(num2*100)+"%,"+Math.floor(num3*100)+"%)";
+     }
+}
 
+
+var sticky = header.offsetTop;
 function myFunction() {
   var scrollTop =  window.pageYOffset;
   if (scrollTop > sticky) {

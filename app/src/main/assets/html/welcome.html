@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html onclick="gotoPage();">
+<head>
+    <meta charset="UTF-8">
+    <LINK rel="stylesheet" TYPE="text/css" HREF="css/MainAppCSS.css">
+
+</head>
+<body dir="rtl" >
+<div class="swami"><center><img  class="swami" src="App_Pic/app_pic.png" width="350" height="300"  alt="shri tailang swami" /></center></div>
+<div><center><b>    יאם ניאם על פי
+    שרי טאילנג סוואמי
+    </b>
+</center>
+</div>
+<div>
+    <center>הועבר ע"י שרי שיוו שנקאר טריפאטי (שיבוג'י)
+             לתלמידי הבריגהו יוגה
+        בשנת 1996
+       </center>
+</div>
+<div>
+        <center>תוספות
+           ד"ר אודי בילו
+           </center>
+</div>
+        <div><bdo dir="rtl"><center>מי שמיישם הנחיות אלו במחשבה בדיבור ומעשה עבורו השחרור מובטח</center></bdo></div>
+        <br>
+<div ><bdo dir="rtl"><center>למעבר להנחיה נא ללחוץ על הכיתוב לחיצה כפולה</center></bdo></div>
+
+</body>
+<script>
+       var paramaters  =  location.search.substring(1).split('&');
+      var time="no time ";
+       var nextURL=" no url ";
+       for(var index=0;index<paramaters.length;index++) {
+           pair = paramaters[index].split("=");
+          if(pair[0]=='page') {
+               nextURL = pair[1];
+           } else
+           if(pair[0]=='wait') {
+                time = pair[1];
+            }
+        }
+    setTimeout(function(){ window.location.href = nextURL; }, parseInt(time));
+
+     function gotoPage() {
+        window.location.href = nextURL;
+    }
+</script>
+</html>

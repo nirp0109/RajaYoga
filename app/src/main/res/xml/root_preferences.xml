@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/content_title">
+
+        <SwitchPreferenceCompat
+            app:key="notify"
+            app:title="@string/notify" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="hour"
+            android:title="@string/notify_when"
+            android:summary="%s"/>
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

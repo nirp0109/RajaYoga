@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">יאם ניאם</string>
+    <string name="loading_indicator">בטעינה...</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="close">יציאה</string>
+    <string name="content_title">תזכורת</string>
+    <string name="content_text">קרא ויישם את ההנחיות היומיות</string>
+    <string name="title_activity_settings">הגדרות</string>
+    <string name="notify">תזכורת יומית</string>
+    <string name="notify_when">שעה לתזכורת</string>
+    <string name="info">אודות</string>
+    <string name="setting">הגדרות</string>
+
+
+</resources>

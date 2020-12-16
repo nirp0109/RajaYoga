@@ -1,0 +1,39 @@
+h1 {
+            color:blue;
+            margin:0;
+            padding:0;
+        }
+h2 {
+            color:DodgerBlue;
+            margin:0;
+            padding:0;
+}
+
+h3{
+        color:Deepskyblue;
+        margin:0;
+        padding:0;
+
+
+   }
+
+
+.header img {
+  width: 50%;
+  height: auto;
+  top:0;
+  justify-content:center;
+  border-radius:50%;
+
+  }
+
+.header h1 {
+  position: relative;
+  top:0;
+}
+
+.swami img {
+width: 100%;
+border-radius: 25px;
+}
+

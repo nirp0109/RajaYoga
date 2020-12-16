@@ -1,0 +1,30 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/action_about"
+        android:enabled="true"
+        android:icon="@drawable/ic_info_24px"
+        android:title="@string/info"
+        android:iconTint="@color/color_white"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_setting"
+        android:enabled="true"
+        android:icon="@drawable/ic_action_name"
+        android:title="@string/setting"
+        android:iconTint="@color/color_white"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_shutdown"
+        android:enabled="true"
+        android:icon="@drawable/ic_power_settings_new_24px"
+        android:iconTint="@color/color_white"
+        android:title="@string/close"
+        android:visible="true"
+        app:showAsAction="ifRoom"></item>
+
+</menu>

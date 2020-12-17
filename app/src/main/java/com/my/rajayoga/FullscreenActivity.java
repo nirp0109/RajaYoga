@@ -286,6 +286,11 @@ public class FullscreenActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Get Bitmap from resource. convert image to bitmap type
+      * @param filePath
+     * @return
+     */
     public  Bitmap getBitmapFromAsset(String filePath) {
         AssetManager assetManager = getAssets();
 
@@ -302,6 +307,9 @@ public class FullscreenActivity extends AppCompatActivity {
         return bitmap;
     }
 
+    /**
+     * Use for callback from JS t JAVA android
+     */
     class CallBackFormJS {
         FullscreenActivity activity = null;
         public CallBackFormJS(FullscreenActivity activity) {

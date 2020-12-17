@@ -1,8 +1,9 @@
 window.onscroll = function() {myFunction()};
+var header = document.getElementById("myHeader");
+
 images = document.getElementsByTagName("img");
 AndroidCallback.getImageName(images[0].src);
-var header = document.getElementById("myHeader");
-console.log("This is a test");
+
 var headerColor = 0;
 function updateHeaders(num1, num2, num3) {
     headers2 = document.getElementsByTagName("h2");

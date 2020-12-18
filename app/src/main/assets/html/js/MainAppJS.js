@@ -40,3 +40,49 @@ function openTab(evt, tabName) {
 
 buttons = document.getElementsByClassName("tablinks");
 buttons[0].click();
+
+function readMoreFunction() {
+  var dots = document.getElementById("dots");
+  var dots2 = document.getElementById("dots2");
+  var moreText = document.getElementById("more");
+  var moreText2 = document.getElementById("more2");
+  var btnText = document.getElementById("myBtn");
+  var btnText2 = document.getElementById("myBtn2");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "קרא עוד";
+    moreText.style.display = "none";
+    } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "הסתר";
+    moreText.style.display = "inline";
+    }
+  if (dots2.style.display === "none") {
+      dots2.style.display = "inline";
+      btnText2.innerHTML = "קרא עוד";
+      moreText2.style.display = "none";
+    } else {
+      dots2.style.display = "none";
+      btnText2.innerHTML = "הסתר";
+      moreText2.style.display = "inline";
+    }
+}
+function readMoreFunction2() {
+
+  var dots2 = document.getElementById("dots2");
+
+  var moreText2 = document.getElementById("more2");
+
+  var btnText2 = document.getElementById("myBtn2");
+
+   if (dots2.style.display === "none") {
+      dots2.style.display = "inline";
+      btnText2.innerHTML = "קרא עוד";
+      moreText2.style.display = "none";
+    } else {
+      dots2.style.display = "none";
+      btnText2.innerHTML = "הסתר";
+      moreText2.style.display = "inline";
+    }
+}

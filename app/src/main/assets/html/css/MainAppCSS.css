@@ -7,32 +7,38 @@ background-color:#F7F8FA;
 
 }
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 100%;
     height: auto;
      padding:10px;
-     background-color:#FFFAF0;
+     background-color:#FFFFFF;
 
 }
 
 .inspiration{
 text-align: center;
 padding-top:20px;
-color:Orange;
+font-size: 20px;
+
 }
+
 hr{
 border-color:#FFFAF0;
+
+
 }
+
 h1 {
             color:black;
             margin:10;
             padding-top:10px;
             padding-bottom:10px;
             text-align: center;
+            font-size: 28px;
+
         }
 h2 {
-            color:orange;
             margin:0;
             padding:0;
             font-weight:bold;
@@ -40,15 +46,28 @@ h2 {
 }
 
 h3{
-        color:orange;
         margin:0;
         padding-top:20px;
-         font-size: 18px;
+        font-size: 20px;
+        font-weight:bold;
 
 
    }
+p.b{
+
+font-size:18px;
+font-weight:bold;
+}
+p.a{
+  font-size:18px;
+  font-weight:lighter;
+}
 
 #more {
+display: none;
+}
+
+#more2{
 display: none;
 }
 
@@ -66,13 +85,16 @@ display: none;
   top:0;
   justify-content:center;
   border-radius:50%;
-
+border: 5px solid #FFFAF0;
   }
 
 .header h1 {
   position: relative;
   top:0;
 }
+
+
+
 
 .swami img {
 width: 100%;

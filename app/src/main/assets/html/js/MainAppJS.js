@@ -6,11 +6,22 @@ AndroidCallback.getImageName(images[0].src);
 
 var headerColor = 0;
 function updateHeaders(num1, num2, num3) {
-    headers2 = document.getElementsByTagName("h2");
+    var headers2 = document.getElementsByTagName("h2");
     for (i = 0; i < headers2.length; i++) {
         headers2[i].style.color = "hsl("+Math.floor(num1)+","+Math.floor(num2*100)+"%,"+Math.floor(num3*100)+"%)";
         headerColor = "hsl("+Math.floor(num1)+","+Math.floor(num2*100)+"%,"+Math.floor(num3*100)+"%)";
      }
+
+         var headers3 = document.getElementsByTagName("h3");
+         for (i = 0; i < headers3.length; i++) {
+             headers3[i].style.color = "hsl("+Math.floor(num1)+","+Math.floor(num2*100)+"%,"+Math.floor(num3*100)+"%)";
+         }
+
+         var inspirations = document.getElementsByClassName("inspiration");
+         for (i = 0; i < inspirations.length; i++) {
+             inspirations[i].style.color = "hsl("+Math.floor(num1)+","+Math.floor(num2*100)+"%,"+Math.floor(num3*100)+"%)";
+         }
+
 }
 
 

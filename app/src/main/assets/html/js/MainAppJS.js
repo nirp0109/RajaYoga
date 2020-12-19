@@ -1,8 +1,10 @@
+//fetch image full path and send it to android
 var header = document.getElementById("myHeader");
 images = document.getElementsByTagName("img");
 AndroidCallback.getImageName(images[0].src);
 
 var headerColor = 0;
+//android will call this method to set the color of elements h2,h3,and inspiration class elements
 function updateHeaders(num1, num2, num3) {
     var headers2 = document.getElementsByTagName("h2");
     for (i = 0; i < headers2.length; i++) {

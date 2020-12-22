@@ -68,8 +68,10 @@ display: none;
   height: 200px;
   overflow: hidden;
   border-radius: 50%;
+  display: flex;
   justify-content:space-evenly;
   text-align: center;
+
 }
 
 .header img {
@@ -85,9 +87,15 @@ display: none;
   height: 200px;
   overflow: hidden;
   border-radius: 50%;
-    justify-content:space-evenly;
-    text-align: center;
+  display: flex;
+  justify-content:center;
 
+}
+
+.center-class {
+    width:100%;
+    display: flex;
+    justify-content:center;
 }
 
 .circular--landscape img {
@@ -102,8 +110,8 @@ display: none;
   height: 200px;
   overflow: hidden;
   border-radius: 50%;
-    justify-content:space-evenly;
-    text-align: center;
+  display: flex;
+  justify-content:center;
 
 }
 

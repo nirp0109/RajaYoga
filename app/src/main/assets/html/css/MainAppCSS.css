@@ -60,18 +60,56 @@ display: none;
   color:blue;
 
 }
-.header img {
-  width: 50%;
-  height: auto;
-  top:0;
-  justify-content:center;
-  border-radius:50%;
 
-  }
-
-.header h1 {
+.header {
+  display: inline-block;
   position: relative;
-  top:0;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  justify-content:space-evenly;
+  text-align: center;
+}
+
+.header img {
+  width: auto;
+  height: 100%;
+
+ }
+
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+    justify-content:space-evenly;
+    text-align: center;
+
+}
+
+.circular--landscape img {
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+}
+
+.circular--portrait {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+    justify-content:space-evenly;
+    text-align: center;
+
+}
+
+.circular--portrait img {
+  width: 100%;
+  height: auto;
 }
 
 .swami img {

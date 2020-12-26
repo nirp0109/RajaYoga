@@ -277,8 +277,8 @@ public class FullscreenActivity extends AppCompatActivity {
     public void createPaletteAsync(Bitmap bitmap) {
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette p) {
-                Palette.Swatch darkVibrantSwatch = p.getDarkVibrantSwatch();
-                if(darkVibrantSwatch!=null) {
+               Palette.Swatch darkVibrantSwatch =p.getDarkVibrantSwatch();
+              if(darkVibrantSwatch!=null) {
                     float[] rr = darkVibrantSwatch.getHsl();
                     mContentView.evaluateJavascript("javascript:updateHeaders("+rr[0]+","+ rr[1] +","+rr[2]+");",null);
                 }

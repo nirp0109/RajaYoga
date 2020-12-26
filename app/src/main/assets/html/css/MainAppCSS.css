@@ -4,7 +4,6 @@ background-color:#F7F8FA;
  padding-right:30px;
  padding-left:30px;
  font-family: 'Rubik', sans-serif;
-            text-align: center;
 
 }
 .card {
@@ -15,12 +14,14 @@ background-color:#F7F8FA;
      padding:10px;
      background-color:#FFFAF0;
 align:center;
+ text-align: center;
+
 }
 
 .inspiration{
 text-align: center;
 padding-top:20px;
-color:#FF8C00;
+color:#900C3F;
 }
 hr{
 border-color:#FFFAF0;
@@ -39,7 +40,7 @@ h2 {
             font-weight:bold;
             font-size: 26px;
             text-align: center;
-            color:#FF8C00;
+            color:#900C3F;
 
 }
 
@@ -47,9 +48,8 @@ h3{
         margin:0;
         padding-top:20px;
         font-size: 18px;
-        text-align: center;
         font-weight:bold;
-        color:#FF8C00;
+        color:#900C3F;
 
 
    }
@@ -87,6 +87,18 @@ display: none;
   background-size: cover;
   content-justify:center;
   text-align:center;
+  fill-color:#900C3F;
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+.caligraph2 {
+  display: block;
+  width:50;
+  height:25;
+  background-size: cover;
+  content-justify:center;
+  text-align:center;
+  fill:#900C3F;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 

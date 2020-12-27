@@ -19,6 +19,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -62,14 +63,13 @@ public class FullscreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        } else {
+            setTheme(R.style.FullscreenTheme);
+        }
         super.onCreate(savedInstanceState);
 //        final ProgressDialog pd = ProgressDialog.show(FullscreenActivity.this, "", getString(R.string.loading_indicator),true);
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-
-
-
-
         setContentView(R.layout.activity_fullscreen);
         mContentView = (WebView)findViewById(R.id.fullscreen_content);
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
@@ -133,7 +133,9 @@ public class FullscreenActivity extends AppCompatActivity {
         updateCurrentDateAsVisted(format);
 
         ((WebView) mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day" + day + ".html&wait=10000");
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
 
 
         //        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);

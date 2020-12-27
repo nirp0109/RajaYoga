@@ -2,7 +2,7 @@
 body{
 background-color:#F7F8FA;
  padding-right:20px;
- padding-left:20px;
+padding-left:20px;
  font-family: 'Rubik', sans-serif;
 
 }
@@ -11,7 +11,7 @@ background-color:#F7F8FA;
   transition: 0.3s;
   width: 100%;
     height: auto;
-     padding:10px;
+     padding:0;
      background-color:#FFFAF0;
 align:center;
  text-align: center;
@@ -22,10 +22,15 @@ align:center;
 text-align: center;
 padding-top:20px;
 color:#900C3F;
+text-style:bold;
 }
+
 hr{
-border-color:#FFFAF0;
+border-color:#F7F8FA;
+text-align: center;
+   width:80%;
 }
+
 h1 {
             color:black;
             margin:10;
@@ -104,27 +109,36 @@ display: none;
 
 .header img {
 position:relative;
-  width: auto;
+  width: 100%;
   height: 100%;
- z-index:3;
+    background-position: center;
+ z-index:1;
  }
 
 .bg-image {
 position:relative;
-   z-index:-1;
+   z-index:1;
   /* Add the blur effect */
   filter: blur(8px);
   -webkit-filter: blur(8px);
-
-  /* Full height */
-  height: 100%;
-
+  width: 100%
+  height:100%;
+opacity: 0.8;
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat:no-repeat;
   background-size: cover;
+}
+
+.container-image img{
+    position: absolute;
+    top: 0;
+    width:100%;
+    height:120px;
+    z-index: 10;
 
 }
+
 .circular--landscape {
   display: inline-block;
   position: relative;

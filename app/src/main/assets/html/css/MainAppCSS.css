@@ -1,8 +1,8 @@
 
 body{
 background-color:#F7F8FA;
- padding-right:30px;
- padding-left:30px;
+ padding-right:20px;
+ padding-left:20px;
  font-family: 'Rubik', sans-serif;
 
 }
@@ -103,11 +103,28 @@ display: none;
 }
 
 .header img {
+position:relative;
   width: auto;
   height: 100%;
-
+ z-index:3;
  }
 
+.bg-image {
+position:relative;
+   z-index:-1;
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+
+}
 .circular--landscape {
   display: inline-block;
   position: relative;
@@ -153,20 +170,7 @@ display: none;
   height: auto;
 
 }
-.bg-image {
 
-  /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 .swami img {
 width: 100%;
 border-radius: 25px;

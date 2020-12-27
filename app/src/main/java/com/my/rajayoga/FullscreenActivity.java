@@ -2,6 +2,7 @@ package com.my.rajayoga;
 
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.palette.graphics.Palette;
@@ -15,6 +16,8 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +28,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -57,8 +62,14 @@ public class FullscreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 //        final ProgressDialog pd = ProgressDialog.show(FullscreenActivity.this, "", getString(R.string.loading_indicator),true);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+
+
+
+
         setContentView(R.layout.activity_fullscreen);
         mContentView = (WebView)findViewById(R.id.fullscreen_content);
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
@@ -122,7 +133,10 @@ public class FullscreenActivity extends AppCompatActivity {
         updateCurrentDateAsVisted(format);
 
         ((WebView) mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day" + day + ".html&wait=10000");
-//        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+
+        //        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
 //        Toast toast = Toast.makeText(this, storage.getString("last", "l") + storage.getBoolean("notify", false) + storage.getString("signature", "s"), Toast.LENGTH_LONG);
 //        toast.show();
     }

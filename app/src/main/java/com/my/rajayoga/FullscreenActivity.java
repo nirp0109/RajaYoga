@@ -132,7 +132,14 @@ public class FullscreenActivity extends AppCompatActivity {
         registerNotification();
         updateCurrentDateAsVisted(format);
 
-        ((WebView) mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day" + day + ".html&wait=10000");
+        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
+        boolean welcome = storage.getBoolean("welcome", true);
+        if(welcome) {
+            ((WebView) mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day" + day + ".html&wait=10000");
+        }
+        else {
+            ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
+        }
         if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
@@ -178,6 +185,7 @@ public class FullscreenActivity extends AppCompatActivity {
         if ("last".equalsIgnoreCase(string)) {
             edit.putBoolean("notify", true);
             edit.putString("hour", "7");
+            edit.putBoolean("welcome", true);
         }
         edit.putString("last", format);
         edit.commit();

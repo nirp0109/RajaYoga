@@ -8,14 +8,21 @@
             app:title="@string/notify" />
 
         <ListPreference
+            android:dependency="notify"
             android:defaultValue="1"
             android:entries="@array/reply_entries"
             android:entryValues="@array/reply_values"
             android:key="hour"
             android:title="@string/notify_when"
             android:summary="%s"/>
-
-
     </PreferenceCategory>
+    <PreferenceCategory
+        app:allowDividerAbove="true"
+        app:title="@string/welcome">
+        <SwitchPreferenceCompat
+            app:key="welcome"
+            app:title="@string/welcome_action" />
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

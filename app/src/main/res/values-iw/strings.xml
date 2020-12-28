@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="welcome">ברוכים הבאים</string>
+    <string name="welcome_action">הראה ברוכים הבאים בהתחלה</string>
     <string name="app_name">יאם ניאם</string>
     <string name="loading_indicator">בטעינה...</string>
     <string name="dummy_button">Dummy Button</string>

@@ -1,5 +1,15 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_help"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@string/help"
+        android:iconTint="@color/color_white"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/action_about"
         android:enabled="true"

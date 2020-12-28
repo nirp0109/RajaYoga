@@ -13,5 +13,6 @@
     <string name="notify_when">Hour for reminder</string>
     <string name="info">About</string>
     <string name="setting">settings</string>
+    <string name="help">help</string>
 
 </resources>

@@ -1,4 +1,3 @@
-
 body{
 background-color:#F7F8FA;
  padding-right:20px;
@@ -6,35 +5,33 @@ padding-left:20px;
  font-family: 'Rubik', sans-serif;
  color:#535352;
  ont-size: 18px;
-
 }
+/*כרטיס */
 .card {
- box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
   transition: 0.3s;
-   width: 100%;
-    height: auto;
-    padding:0;
-    background-color:#FFFAF0;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  background-color:#FFFAF0;
 align:center;
- text-align: center;
-
+border-radius: 8px;
 
 }
-
+/*דברי חוכמה */
 .inspiration{
 text-align: center;
-padding-top:20px;
+padding-top:26px;
 font-size: 20px;
 color:#904A53;
-text-style:bold;
 }
-
+/*קו הפרדה */
 hr{
 border-color:#F7F8FA;
 text-align: center;
    width:80%;
 }
-
+/*כותרות */
 h1 {
             color:#00000;
             font-size: 26px;
@@ -63,7 +60,7 @@ h3{
 
 
    }
-
+/*קרא עוד */
 .more {
 display: none;
 }
@@ -73,23 +70,11 @@ display: none;
   border:none;
   margin:0;
   padding:0;
-  color:blue;
+  color:#2B77D3;
 
 }
 
-.header {
-  display: inline-block;
-  position: relative;
-  width:200px;
-  height:200px;
-  overflow: hidden;
-  border-radius: 50%;
-  display: flex;
-  justify-content:space-evenly;
-  text-align: center;
-
-}
-
+/*עיטור */
 .caligraph {
   display: block;
   width: auto;
@@ -112,6 +97,20 @@ display: none;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
+/*עיגול*/
+.header {
+  display: inline-block;
+  position: relative;
+  width:222px;
+  height:222px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content:space-evenly;
+  text-align: center;
+}
+
+/*תמונה  בראש ההנחיות*/
 .header img {
 position:relative;
   width: 100%;
@@ -119,7 +118,7 @@ position:relative;
     background-position: center;
  z-index:1;
  }
-
+/*תמונה מטושטשת מאחור*/
 .bg-image {
 position:relative;
 
@@ -145,7 +144,7 @@ opacity: 10;
     z-index: 10;
 
 }
-
+/*עיגול מסביב לתמונה */
 .circular--landscape {
   display: inline-block;
   position: relative;
@@ -158,12 +157,6 @@ opacity: 10;
  border-style:solid;
   border-color:White;
   border-width:5px;
-}
-
-.center-class {
-    width:100%;
-    display: flex;
-    justify-content:center;
 }
 
 .circular--landscape img {
@@ -191,10 +184,11 @@ opacity: 10;
   height: auto;
 
 }
-.p{
-
-text-color:535352;
-
+/*מרכוז*/
+.center-class {
+    width:100%;
+    display: flex;
+    justify-content:center;
 }
 .swami img {
 width: 100%;

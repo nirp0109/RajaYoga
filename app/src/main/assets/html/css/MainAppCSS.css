@@ -4,24 +4,28 @@ background-color:#F7F8FA;
  padding-right:20px;
 padding-left:20px;
  font-family: 'Rubik', sans-serif;
+ color:#535352;
+ ont-size: 18px;
 
 }
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 100%;
+   width: 100%;
     height: auto;
-     padding:0;
-     background-color:#FFFAF0;
+    padding:0;
+    background-color:#FFFAF0;
 align:center;
  text-align: center;
+
 
 }
 
 .inspiration{
 text-align: center;
 padding-top:20px;
-color:#900C3F;
+font-size: 20px;
+color:#904A53;
 text-style:bold;
 }
 
@@ -32,7 +36,8 @@ text-align: center;
 }
 
 h1 {
-            color:black;
+            color:#00000;
+            font-size: 26px;
             margin:10;
             font-weight:bold;
             padding-top:10px;
@@ -45,7 +50,7 @@ h2 {
             font-weight:bold;
             font-size: 26px;
             text-align: center;
-            color:#900C3F;
+            color:#904A53;
 
 }
 
@@ -54,7 +59,7 @@ h3{
         padding-top:20px;
         font-size: 18px;
         font-weight:bold;
-        color:#900C3F;
+        color:#904A53;
 
 
    }
@@ -92,7 +97,7 @@ display: none;
   background-size: cover;
   content-justify:center;
   text-align:center;
-  fill-color:#900C3F;
+  fill-color:#904A53;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
@@ -103,7 +108,7 @@ display: none;
   background-size: cover;
   content-justify:center;
   text-align:center;
-  fill:#900C3F;
+  fill:#904A53;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
@@ -117,17 +122,19 @@ position:relative;
 
 .bg-image {
 position:relative;
-   z-index:1;
+
   /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+  shadow:black;
   width: 100%
   height:100%;
-opacity: 0.8;
+opacity: 10;
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat:no-repeat;
   background-size: cover;
+  z-index:1;
 }
 
 .container-image img{
@@ -184,7 +191,11 @@ opacity: 0.8;
   height: auto;
 
 }
+.p{
 
+text-color:535352;
+
+}
 .swami img {
 width: 100%;
 border-radius: 25px;

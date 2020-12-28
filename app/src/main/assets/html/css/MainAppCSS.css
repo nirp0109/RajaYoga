@@ -23,13 +23,12 @@ border-radius: 8px;
 text-align: center;
 padding-top:26px;
 font-size: 20px;
-color:#904A53;
+color:#CB5A09;
 }
 /*קו הפרדה */
 hr{
 border-color:#F7F8FA;
-text-align: center;
-   width:80%;
+width:80%;
 }
 /*כותרות */
 h1 {
@@ -47,7 +46,7 @@ h2 {
             font-weight:bold;
             font-size: 26px;
             text-align: center;
-            color:#904A53;
+            color:#CB5A09;
 
 }
 
@@ -56,10 +55,26 @@ h3{
         padding-top:20px;
         font-size: 18px;
         font-weight:bold;
-        color:#904A53;
+     /*   color:#CB5A09;*/
+     color:black;
 
 
    }
+.help{
+  color:#CB5A09;
+  margin:0;
+   padding-top:20px;
+   font-size: 18px;
+    font-weight:bold;
+
+   }
+.helpname{
+
+      padding-top:20px;
+      font-size: 14px;
+
+
+      }
 /*קרא עוד */
 .more {
 display: none;
@@ -82,18 +97,18 @@ display: none;
   background-size: cover;
   content-justify:center;
   text-align:center;
-  fill-color:#904A53;
+  fill-color:#CB5A09;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
 .caligraph2 {
   display: block;
-  width:50;
-  height:25;
+  width:80;
+  height:35;
   background-size: cover;
   content-justify:center;
   text-align:center;
-  fill:#904A53;
+  fill:#CB5A09;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 

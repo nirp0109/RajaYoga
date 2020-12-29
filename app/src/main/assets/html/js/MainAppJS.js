@@ -40,3 +40,15 @@ function readMoreFunction(event) {
     }
 }
 
+var ua = navigator.userAgent;
+var chromeVersion = -1;
+console.log("ua:"+ua);
+if (/Chrome\/(\S+)/.test(ua)) {
+      var  ver = RegExp["$1"];
+      chromeVersion = parseFloat(ver);
+}
+
+if(chromeVersion>73) {
+    var bodies = document.getElementsByTagName("body");
+    bodies[0].classList.add("body-toolbar-fix");
+}

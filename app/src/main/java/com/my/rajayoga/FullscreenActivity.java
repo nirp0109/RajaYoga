@@ -141,7 +141,7 @@ public class FullscreenActivity extends AppCompatActivity {
             ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
         }
         if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+         //   getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
 

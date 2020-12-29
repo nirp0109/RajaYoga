@@ -39,3 +39,4 @@ function readMoreFunction(event) {
     more.style.display = "inline";
     }
 }
+

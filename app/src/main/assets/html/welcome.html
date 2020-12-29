@@ -1,31 +1,41 @@
-<!DOCTYPE html>
-<html onclick="gotoPage();">
+<!DOCTYPE>
+<html>
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com" >
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
     <LINK rel="stylesheet" TYPE="text/css" HREF="css/MainAppCSS.css">
 
 </head>
-<body dir="rtl" >
-<div class="swami"><center><img  class="swami" src="App_Pic/app_pic.png" width="350" height="300"  alt="shri tailang swami" /></center></div>
-<div><center><b>    יאם ניאם על פי
-    שרי טאילנג סוואמי
-    </b>
+<body dir="rtl" id="welcomegrad">
+<div class="welcomeh1"> יאם ניאם</div>
+<br>
+ <div class="welcomeh2"> על פי שרי טאילנג סוואמי
+</div>
+<div>
+    <center>
+        <img class="caligraph" src="App_Pic/caligraph2.svg"/>
+    </center>
+</div>
+<div class="center-class">
+    <div class="container-image">
+        <div class="header circular--swami">
+            <img   src="App_Pic/imgopen.png" alt="dynamicpic" /></div>
+    </div>
+</div>
+<br>
+<div class="welcomeh3">
+    הועבר ע"י שרי שיוו שנקאר טריפאטי (שיבוג'י),
+    לתלמידי הבריגהו יוגה בשנת 1996
+<br>
+תוספות ד"ר אודי בילו
+
+</div>
+<br>
+<br>
+<center>
+<button class="welcomebutton" onclick="" >להנחיה</button>
 </center>
-</div>
-<div>
-    <center>הועבר ע"י שרי שיוו שנקאר טריפאטי (שיבוג'י)
-             לתלמידי הבריגהו יוגה
-        בשנת 1996
-       </center>
-</div>
-<div>
-        <center>תוספות
-           ד"ר אודי בילו
-           </center>
-</div>
-        <div><bdo dir="rtl"><center>מי שמיישם הנחיות אלו במחשבה בדיבור ומעשה עבורו השחרור מובטח</center></bdo></div>
-        <br>
-<div ><bdo dir="rtl"><center>למעבר להנחיה נא ללחוץ על הכיתוב לחיצה כפולה</center></bdo></div>
 
 </body>
 <script>
@@ -41,7 +51,7 @@
                 time = pair[1];
             }
         }
-    setTimeout(function(){ window.location.href = nextURL; }, parseInt(time));
+ //   setTimeout(function(){ window.location.href = nextURL; }, parseInt(time));
 
      function gotoPage() {
         window.location.href = nextURL;

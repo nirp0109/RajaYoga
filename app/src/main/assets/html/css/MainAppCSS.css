@@ -65,18 +65,26 @@ h3{
         font-weight:bold;
      /*   color:#CB5A09;*/
      color:black;
-
-
    }
+
 .help{
   color:#CB5A09;
   margin:0;
-   padding-top:50px;
-   font-size: 18px;
+    padding-top:20px;
+   text-align: center;
+   font-size: 26px;
     font-weight:bold;
 
    }
+.helptext{
+ font-size: 18px;
+       padding-top:20px;
+}
+.names{
 
+      padding-top:20px;
+      font-size: 14px;
+      }
    .welcomeh1{
    padding-top:80px;
    color:white;
@@ -97,13 +105,7 @@ h3{
      text-align: center;
       }
 
-.names{
 
-      padding-top:20px;
-      font-size: 14px;
-
-
-      }
 /*קרא עוד */
 .more {
 display: none;

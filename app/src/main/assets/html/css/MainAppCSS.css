@@ -71,14 +71,14 @@ h3{
 .help{
   color:#CB5A09;
   margin:0;
-   padding-top:20px;
+   padding-top:50px;
    font-size: 18px;
     font-weight:bold;
 
    }
 
    .welcomeh1{
-    padding-top:80px;
+   padding-top:80px;
    color:white;
  font-weight:bold;
  font-size: 26px;
@@ -90,7 +90,7 @@ h3{
     font-size: 18px;
      text-align: center;
    }
-   .welcomeh3{
+   .welcometext{
       color:black;
     font-size: 18px;
      font-weight:bold;
@@ -143,8 +143,8 @@ border: 1px solid black;
 /*עיטור */
 .caligraph {
   display: block;
-  width:150;
-  height:80;
+  width:150px;
+  height:80px;
   background-size: cover;
   content-justify:center;
   text-align:center;
@@ -203,7 +203,7 @@ opacity: 10;
 }
 
 #welcomegrad{
-background-image:linear-gradient(red,orange);
+background-image:linear-gradient(#ff0000,orange);
 }
 
 .container-image img{

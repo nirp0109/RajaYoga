@@ -2,7 +2,9 @@ package com.my.rajayoga;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
 import android.webkit.WebView;
 
 public class HelpActivity extends AppCompatActivity {

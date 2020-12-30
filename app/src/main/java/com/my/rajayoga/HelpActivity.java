@@ -13,10 +13,15 @@ public class HelpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        } else {
+            setTheme(R.style.FullscreenTheme);
+        }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+        setContentView(R.layout.activity_help);
         WebView mContentView = (WebView)findViewById(R.id.help_content);
         ((WebView)mContentView).loadUrl("file:///android_asset/html/help.html");
     }

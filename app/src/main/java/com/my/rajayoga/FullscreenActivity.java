@@ -69,6 +69,8 @@ public class FullscreenActivity extends AppCompatActivity {
             setTheme(R.style.FullscreenTheme);
         }
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 //        final ProgressDialog pd = ProgressDialog.show(FullscreenActivity.this, "", getString(R.string.loading_indicator),true);
         setContentView(R.layout.activity_fullscreen);
         mContentView = (WebView)findViewById(R.id.fullscreen_content);
@@ -216,7 +218,9 @@ public class FullscreenActivity extends AppCompatActivity {
                 intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);
                 return true;
-
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

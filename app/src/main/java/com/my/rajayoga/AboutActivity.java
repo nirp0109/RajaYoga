@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class AboutActivity extends AppCompatActivity {
@@ -22,6 +26,17 @@ public class AboutActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         setContentView(R.layout.activity_about);
         WebView mContentView = (WebView)findViewById(R.id.about_content);
+        WebSettings settings = mContentView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setSupportZoom(true);
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
+        mContentView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                Log.d("WebView", consoleMessage.message());
+                return true;
+            }
+        });
         ((WebView)mContentView).loadUrl("file:///android_asset/html/About.html");
     }
 

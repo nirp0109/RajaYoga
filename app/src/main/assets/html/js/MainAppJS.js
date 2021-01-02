@@ -42,13 +42,23 @@ function readMoreFunction(event) {
 
 var ua = navigator.userAgent;
 var chromeVersion = -1;
-console.log("ua:"+ua);
 if (/Chrome\/(\S+)/.test(ua)) {
       var  ver = RegExp["$1"];
       chromeVersion = parseFloat(ver);
 }
-
 if(chromeVersion>73) {
     var bodies = document.getElementsByTagName("body");
     bodies[0].classList.add("body-toolbar-fix");
+} else {
+    var headers = document.getElementsByClassName("header");
+    if(headers) {
+        var picDiv = headers[0];
+        var container = picDiv.parentElement;
+        var center = container.parentElement;
+        center.removeChild(container);
+        center.appendChild(picDiv);
+        if(picDiv.classList.contains("circular--swami")) {
+            picDiv.classList.remove("circular--swami");
+        }
+     }
 }

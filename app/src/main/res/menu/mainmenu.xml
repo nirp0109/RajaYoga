@@ -28,6 +28,7 @@
         android:visible="true"
         app:showAsAction="ifRoom" />
 
+   <!--
     <item
         android:id="@+id/action_shutdown"
         android:enabled="true"
@@ -36,5 +37,5 @@
         android:title="@string/close"
         android:visible="true"
         app:showAsAction="ifRoom"></item>
-
+-->
 </menu>

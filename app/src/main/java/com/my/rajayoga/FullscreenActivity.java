@@ -204,9 +204,6 @@ public class FullscreenActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.action_shutdown:
-                finish();
-                return true;
             case R.id.action_setting:
                 openSettingActivity();
                 return true;

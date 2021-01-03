@@ -23,7 +23,7 @@ function updateHeaders(num1, num2, num3) {
          }
 
 }
-
+//This method is for the read more or hide functionality in days instructions
 function readMoreFunction(event) {
   var target = event.target;
   var more =  target.previousElementSibling;
@@ -40,16 +40,17 @@ function readMoreFunction(event) {
     }
 }
 
+//get the browser version and act accordingly
 var ua = navigator.userAgent;
 var chromeVersion = -1;
 if (/Chrome\/(\S+)/.test(ua)) {
       var  ver = RegExp["$1"];
       chromeVersion = parseFloat(ver);
 }
-if(chromeVersion>73) {
+if(chromeVersion>73) {//in case of version 74 and more make space bewteen containt and the toolbar
     var bodies = document.getElementsByTagName("body");
     bodies[0].classList.add("body-toolbar-fix");
-} else {
+} else {//fix lower version of browser: remove background and nested div (container) and circular--swami class that cause problem
     var headers = document.getElementsByClassName("header");
     if(headers) {
         var picDiv = headers[0];

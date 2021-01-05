@@ -20,7 +20,7 @@ padding-left:20px;
   padding-right:20px;
   padding-left:20px;
 /*  text-align: center;*/
-  background-color:#FFFAF0;
+  background-color:#FFFAFA;
 /*align:center;*/
 border-radius: 8px;
 
@@ -87,24 +87,26 @@ h3{
       }
 
    .welcomeh1{
-   padding-top:80px;
+  padding-top:80px;
 
-   color:white;
+   color:#CB5A09;
  font-weight:bold;
  font-size: 26px;
   text-align: center;
    }
 
  .welcomeh2{
-   color:white;
+   color:black;
     font-size: 18px;
      text-align: center;
+     /* padding-bottom:24px;*/
    }
    .welcometext{
       color:black;
     font-size: 18px;
      font-weight:bold;
      text-align: center;
+     padding-top:24px;
       }
 
 
@@ -114,15 +116,16 @@ h3{
      background-repeat:no-repeat;
      cursor:pointer;
      overflow: hidden;
-border: 1px solid black;
+border: 1px solid #CB5A09;;
      display: inline-block;
      	padding: 12px 12px;
-     	color: black;
+     	color: #CB5A09;
      	text-decoration: none;
      	font-size: 18px;
      	text-align:center;
+    	font-weight:bold;
      	line-height:100%;
-     	height:40px;
+    	height:40px;
         width: 180px;
      	-webkit-border-radius:100px;
      	-moz-border-radius: 100px;
@@ -142,7 +145,7 @@ border: 1px solid black;
 /*עיטור */
 .caligraph {
   display: block;
-  width:150px;
+  width:130px;
   height:80px;
   background-size: cover;
   content-justify:center;
@@ -153,8 +156,8 @@ border: 1px solid black;
 
 .caligraph2 {
   display: block;
-  width:80;
-  height:35;
+  width:96;
+  height:80;
   background-size: cover;
   content-justify:center;
   text-align:center;
@@ -207,9 +210,19 @@ opacity: 10;
   z-index:1;
 }
 
-#welcomegrad{
+#WelcomeGrad{
+background-image:linear-gradient(#D3D3D3,#F7F8FA,#FFFAFA);
+}
+#PageGard{
+background-image:linear-gradient(#F7F8FA,#FFFAFA);
+
+}
+
+
+#WelcomeGradOrange{
 background-image:linear-gradient(#ff0000,orange);
 }
+
 
 .container-image img{
     position: absolute;
@@ -222,6 +235,7 @@ background-image:linear-gradient(#ff0000,orange);
 .circular--swami {
   display: inline-block;
   position: relative;
+
   width:222px;
   height:222px;
   overflow: hidden;

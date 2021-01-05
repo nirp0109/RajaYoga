@@ -19,6 +19,7 @@ padding-left:20px;
   height: auto;
   padding-right:20px;
   padding-left:20px;
+padding-top:20px;
 /*  text-align: center;*/
   background-color:#FFFAFA;
 /*align:center;*/
@@ -37,6 +38,7 @@ hr{
 border-color:#F7F8FA;
 width:auto;
 text-align:right;
+
 }
 /*כותרות */
 h1 {
@@ -60,7 +62,7 @@ h2 {
 
 h3{
         margin:0;
-        padding-top:20px;
+        padding-top:10px;
         font-size: 18px;
         font-weight:bold;
      /*   color:#CB5A09;*/
@@ -101,7 +103,7 @@ h3{
      text-align: center;
      /* padding-bottom:24px;*/
    }
-   .welcometext{
+.welcometext{
       color:black;
     font-size: 18px;
      font-weight:bold;
@@ -146,7 +148,7 @@ border: 1px solid #CB5A09;;
 .caligraph {
   display: block;
   width:130px;
-  height:80px;
+  height:45px;
   background-size: cover;
   content-justify:center;
   text-align:center;
@@ -157,7 +159,7 @@ border: 1px solid #CB5A09;;
 .caligraph2 {
   display: block;
   width:96;
-  height:80;
+  height:45;
   background-size: cover;
   content-justify:center;
   text-align:center;
@@ -213,10 +215,7 @@ opacity: 10;
 #WelcomeGrad{
 background-image:linear-gradient(#D3D3D3,#F7F8FA,#FFFAFA);
 }
-#PageGard{
-background-image:linear-gradient(#F7F8FA,#FFFAFA);
 
-}
 
 
 #WelcomeGradOrange{

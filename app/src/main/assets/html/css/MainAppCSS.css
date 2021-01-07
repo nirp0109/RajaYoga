@@ -68,7 +68,7 @@ h3{
      /*   color:#CB5A09;*/
      color:black;
    }
-
+/* דף אופן השימוש */
 .help{
   color:#CB5A09;
   margin:0;
@@ -87,7 +87,7 @@ h3{
       padding-top:20px;
       font-size: 14px;
       }
-
+/*דף פתיחה */
    .welcomeh1{
   padding-top:80px;
 
@@ -106,11 +106,10 @@ h3{
 .welcometext{
       color:black;
     font-size: 18px;
-     font-weight:bold;
+
      text-align: center;
      padding-top:24px;
       }
-
 
 .welcomebutton{
 
@@ -134,7 +133,7 @@ border: 1px solid #CB5A09;;
      	border-radius: 100px;
 
  }
-
+/*קרא עוד */
 .btn {
   background:none;
   border:none;
@@ -142,6 +141,11 @@ border: 1px solid #CB5A09;;
   padding:0;
   color:#2B77D3;
 
+}
+
+/*קרא עוד */
+.more {
+display: none;
 }
 
 /*עיטור */
@@ -167,10 +171,7 @@ border: 1px solid #CB5A09;;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
-/*קרא עוד */
-.more {
-display: none;
-}
+
 
 
 /*עיגול*/
@@ -189,8 +190,8 @@ display: none;
 /*תמונה  בראש ההנחיות*/
 .header img {
 position:relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vw;
     background-position: center;
  z-index:1;
  }
@@ -201,26 +202,22 @@ position:relative;
   /* Add the blur effect */
   filter: blur(20px);
   -webkit-filter: blur(20px);
-  shadow:black;
-  width: 100%
-  height:100%;
-opacity: 10;
-  /* Center and scale the image nicely */
+shadow:black;
+ /* width: 100%;
+  height:100%;*/
+  width: calc( 100vw - 60px );
+
+ /* width:100vw;
+opacity:10px;*/
+  /* Center and scale the image  */
   background-position: center;
   background-repeat:no-repeat;
   background-size: cover;
+
   z-index:1;
 }
 
-#WelcomeGrad{
-background-image:linear-gradient(#D3D3D3,#F7F8FA,#FFFAFA);
-}
 
-
-
-#WelcomeGradOrange{
-background-image:linear-gradient(#ff0000,orange);
-}
 
 
 .container-image img{
@@ -232,15 +229,16 @@ background-image:linear-gradient(#ff0000,orange);
 
 }
 .circular--swami {
-  display: inline-block;
-  position: relative;
+/*  display: inline-block;
+  position: relative;*/
 
   width:222px;
   height:222px;
   overflow: hidden;
   border-radius: 50%;
-  display: flex;
+ /* display: flex;*/
   justify-content:center;
+ margin:auto;
 
 
 
@@ -254,17 +252,18 @@ background-image:linear-gradient(#ff0000,orange);
 }
 /*עיגול מסביב לתמונה */
 .circular--landscape {
-  display: inline-block;
-  position: relative;
+ /* display: inline-block;
+  position: relative;*/
   width:200px;
   height:200px;
   overflow: hidden;
   border-radius: 50%;
-  display: flex;
+ /* display: flex;*/
+margin:auto;
   justify-content:center;
  border-style:solid;
-  border-color:White;
-  border-width:5px;
+  border-color:white;
+  border-width:8px;
 }
 
 .circular--landscape img {
@@ -275,16 +274,17 @@ background-image:linear-gradient(#ff0000,orange);
 }
 
 .circular--portrait {
-  position: relative;
+ /* position: relative;*/
   width:200px;
   height:200px;
   overflow: hidden;
   border-radius: 50%;
-  display: flex;
+/* display: flex;*/
+ margin:auto;
   justify-content:center;
  border-style:solid;
-    border-color:White;
-    border-width:5px;
+    border-color:white;
+    border-width:8px;
 }
 
 .circular--portrait img {
@@ -294,8 +294,18 @@ background-image:linear-gradient(#ff0000,orange);
 }
 /*מרכוז*/
 .center-class {
-    width:100%;
-    display: flex;
+/*    width:100%;*/
+width: calc( 100vw - 60px );
+
+/*   display: flex;*/
     justify-content:center;
 }
 
+/* גראדיאנט*/
+#WelcomeGrad{
+background-image:linear-gradient(#D3D3D3,#F7F8FA,#FFFAFA);
+}
+
+#WelcomeGradOrange{
+background-image:linear-gradient(#ff0000,orange);
+}

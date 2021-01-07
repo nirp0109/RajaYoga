@@ -71,6 +71,7 @@ public class FullscreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 //        final ProgressDialog pd = ProgressDialog.show(FullscreenActivity.this, "", getString(R.string.loading_indicator),true);
         setContentView(R.layout.activity_fullscreen);
         mContentView = (WebView)findViewById(R.id.fullscreen_content);
@@ -79,7 +80,7 @@ public class FullscreenActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        mContentView.addJavascriptInterface(new CallBackFormJS(this),"AndroidCallback");
+     //   mContentView.addJavascriptInterface(new CallBackFormJS(this),"AndroidCallback");
         mContentView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {

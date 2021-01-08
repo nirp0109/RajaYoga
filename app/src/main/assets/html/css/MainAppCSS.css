@@ -199,7 +199,7 @@ display: none;
 
 
 /*עיגול*/
-.header {
+.header, header-old {
   display: inline-block;
   position: relative;
   width:222px;
@@ -220,6 +220,13 @@ position:relative;
  z-index:1;
  }
 
+.header-old img {
+position:relative;
+  width: 100%;
+  height: auto;
+    background-position: center;
+ z-index:1;
+ }
 /*תמונה מטושטשת מאחור*/
 .bg-image {
 position:relative;
@@ -323,6 +330,15 @@ width: calc( 100vw - 60px );
 /*   display: flex;*/
     justify-content:center;
 }
+
+
+/*מרכוז */
+.center-class-old {
+    width:100%;
+    display: flex;
+    justify-content:center;
+}
+
 
 /* גראדיאנט*/
 #WelcomeGrad{

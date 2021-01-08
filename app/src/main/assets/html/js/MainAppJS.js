@@ -50,16 +50,36 @@ if (/Chrome\/(\S+)/.test(ua)) {
 if(chromeVersion>73) {//in case of version 74 and more make space bewteen containt and the toolbar
     var bodies = document.getElementsByTagName("body");
     bodies[0].classList.add("body-toolbar-fix");
-} else {//fix lower version of browser: remove background and nested div (container) and circular--swami class that cause problem
+}
+else {//fix lower version of browser: remove background and nested div (container) and circular--swami class that cause problem
     var headers = document.getElementsByClassName("header");
     if(headers) {
-        var picDiv = headers[0];
-        var container = picDiv.parentElement;
-        var center = container.parentElement;
-        center.removeChild(container);
-        center.appendChild(picDiv);
-        if(picDiv.classList.contains("circular--swami")) {
-            picDiv.classList.remove("circular--swami");
-        }
+        var presented_url = ""+window.location;
+        var page_url = presented_url.substring(presented_url.lastIndexOf("/")+1);
+        if(page_url.startsWith("day")) {
+            var picDiv = headers[0];
+            var container = picDiv.parentElement;
+            var center = container.parentElement;
+            center.removeChild(container);
+            center.appendChild(picDiv);
+         } else {
+            var picDiv = headers[0];
+            var container = picDiv.parentElement;
+            var center = container.parentElement;
+            center.removeChild(container);
+            center.appendChild(picDiv);
+            if(center.classList.contains("center-class")) {
+                center.classList.remove("center-class");
+                center.classList.add("center-class-old");
+            }
+            if(picDiv.classList.contains("circular--swami")) {
+                   picDiv.classList.remove("circular--swami");
+            }
+           if(picDiv.classList.contains("header")) {
+                 picDiv.classList.remove("header");
+                 picDiv.classList.add("header-old");
+           }
+
+         }
      }
 }

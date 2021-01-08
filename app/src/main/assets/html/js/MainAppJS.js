@@ -47,6 +47,7 @@ if (/Chrome\/(\S+)/.test(ua)) {
       var  ver = RegExp["$1"];
       chromeVersion = parseFloat(ver);
 }
+window.console.log("chromeVersion:"+chromeVersion);
 if(chromeVersion>73) {//in case of version 74 and more make space bewteen containt and the toolbar
     var bodies = document.getElementsByTagName("body");
     bodies[0].classList.add("body-toolbar-fix");

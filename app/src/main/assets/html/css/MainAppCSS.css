@@ -1,6 +1,7 @@
 html {
  scroll-behavior: smooth;
 }
+
 body{
 background-color:#F7F8FA;
  padding-right:20px;
@@ -24,7 +25,7 @@ box-shadow:
 
  padding-right:5vh;
   padding-left:5vh;
-
+padding-top:3vh;
  background-color:#FFFFFF;
 
   width:auto;
@@ -41,7 +42,7 @@ box-shadow:
   width:auto;
   height: auto;
   padding-right:20px;
-  padding-left:20px;
+ padding-left:20px;
 padding-top:20px;
 
  background-color:#FFFFFF;
@@ -85,7 +86,7 @@ h2 {
 
 h3{
         margin:0;
-        padding-top:5vh;
+        padding-top:2vh;
         font-size: 18px;
         font-weight:bold;
      /*   color:#CB5A09;*/
@@ -124,12 +125,11 @@ h3{
    color:black;
     font-size: 18px;
      text-align: center;
-     /* padding-bottom:24px;*/
+
    }
 .welcometext{
       color:black;
     font-size: 18px;
-
      text-align: center;
      padding-top:5vh;
       }
@@ -195,8 +195,6 @@ display: none;
 }
 
 
-
-
 /*עיגול*/
 .header, header-old {
   display: inline-block;
@@ -230,24 +228,16 @@ position:relative;
 .bg-image {
 position:relative;
   /* Add the blur effect */
-
  filter:blur(var(20px,1rem));
   -webkit-filter:blur(20px);
-
-border-radius:8px;
-
-  width:calc(100vw - 60px);
-/*  opacity:10px;*/
+    border-radius:8px;
+    width:calc(100vw - 60px);
   /* Center and scale the image  */
   background-position: center;
   background-repeat:no-repeat;
   background-size: cover;
-
   z-index:1;
 }
-
-
-
 
 .container-image img{
     position: absolute;
@@ -258,26 +248,23 @@ border-radius:8px;
 
 }
 .circular--swami {
-/*  display: inline-block;
-  position: relative;*/
-
-  width:222px;
-  height:222px;
+  position: relative;
+  width:200px;
+  height:200px;
   overflow: hidden;
   border-radius: 50%;
- /* display: flex;*/
+  display: flex;
   justify-content:center;
  margin:auto;
-
-
 
 }
 
 .circular--swami img {
   width: auto;
   height: 100%;
-}
+ /* margin-left: -50px;*/
 
+}
 /*עיגול מסביב לתמונה */
 .circular--landscape {
  /* display: inline-block;

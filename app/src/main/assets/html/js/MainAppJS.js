@@ -54,12 +54,8 @@ if (/Chrome\/(\S+)/.test(ua)) {
       var  ver = RegExp["$1"];
       chromeVersion = parseFloat(ver);
 }
-window.console.log("chromeVersion:"+chromeVersion);
-if(chromeVersion>44) {//in case of version 74 and more make space bewteen containt and the toolbar
-    var bodies = document.getElementsByTagName("body");
-    bodies[0].classList.add("body-toolbar-fix");
-}
-else {//fix lower version of browser: remove background and nested div (container) and circular--swami class that cause problem
+//fix lower version of browser: remove background and nested div (container) and circular--swami class that cause problem
+if(chromeVersion<=44) {
     var headers = document.getElementsByClassName("header");
     if(headers) {
         var presented_url = ""+window.location;

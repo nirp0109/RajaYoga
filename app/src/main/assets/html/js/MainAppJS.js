@@ -38,7 +38,6 @@ function readMoreFunction(event) {
     dots.style.display = "inline";
     target.innerHTML = "קרא עוד";
     more.style.display = "none";
-    window.console.log("jump to:"+ dots["id"]);
     window.location.href = "#"+dots["id"];
     } else {
     dots.style.display = "none";

@@ -29,16 +29,16 @@ function readMoreFunction(event) {
   var target = event.target;
   var more =  target.previousElementSibling;
   var dots = more.previousElementSibling;
-  if (!dots.hasAttribute("id")) {
+  if (!target.hasAttribute("id")) {
     var newID =  "" + counter++;
-    dots.setAttribute("id",newID);
+    target.setAttribute("id",newID);
   }
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     target.innerHTML = "קרא עוד";
     more.style.display = "none";
-    window.location.href = "#"+dots["id"];
+    window.location.href = "#"+target["id"];
     } else {
     dots.style.display = "none";
     target.innerHTML = "הסתר";

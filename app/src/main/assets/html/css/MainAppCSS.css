@@ -276,9 +276,8 @@ border-radius:8px;
 .circular--swami img {
   width: auto;
   height: 100%;
-  margin-left: -50px;
-
 }
+
 /*עיגול מסביב לתמונה */
 .circular--landscape {
  /* display: inline-block;

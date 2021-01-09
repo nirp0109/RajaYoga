@@ -54,9 +54,8 @@ if (/Chrome\/(\S+)/.test(ua)) {
       var  ver = RegExp["$1"];
       chromeVersion = parseFloat(ver);
 }
-window.console.log("chromeVersion:"+chromeVersion);
-if(chromeVersion<=44) {
 //fix lower version of browser: remove background and nested div (container) and circular--swami class that cause problem
+if(chromeVersion<=44) {
     var headers = document.getElementsByClassName("header");
     if(headers) {
         var presented_url = ""+window.location;

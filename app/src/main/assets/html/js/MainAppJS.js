@@ -23,20 +23,28 @@ function updateHeaders(num1, num2, num3) {
          }
 
 }
+var counter = 1;
 //This method is for the read more or hide functionality in days instructions
 function readMoreFunction(event) {
   var target = event.target;
   var more =  target.previousElementSibling;
   var dots = more.previousElementSibling;
+  if (!dots.hasAttribute("id")) {
+    var newID =  "" + counter++;
+    dots.setAttribute("id",newID);
+  }
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     target.innerHTML = "קרא עוד";
     more.style.display = "none";
+    window.console.log("jump to:"+ dots["id"]);
+    window.location.href = "#"+dots["id"];
     } else {
     dots.style.display = "none";
     target.innerHTML = "הסתר";
     more.style.display = "inline";
+
     }
 }
 
@@ -48,7 +56,7 @@ if (/Chrome\/(\S+)/.test(ua)) {
       chromeVersion = parseFloat(ver);
 }
 window.console.log("chromeVersion:"+chromeVersion);
-if(chromeVersion>73) {//in case of version 74 and more make space bewteen containt and the toolbar
+if(chromeVersion>44) {//in case of version 74 and more make space bewteen containt and the toolbar
     var bodies = document.getElementsByTagName("body");
     bodies[0].classList.add("body-toolbar-fix");
 }

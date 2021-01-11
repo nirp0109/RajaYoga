@@ -134,15 +134,8 @@ public class FullscreenActivity extends AppCompatActivity {
         day = Integer.parseInt(format.substring(0, 2));
         registerNotification();
         updateCurrentDateAsVisted(format);
+        ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
 
-        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
-        boolean welcome = storage.getBoolean("welcome", true);
-        if(welcome) {
-            ((WebView) mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day" + day + ".html&wait=10000");
-        }
-        else {
-            ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
-        }
         if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
          //   getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
@@ -217,7 +210,8 @@ public class FullscreenActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case android.R.id.home:
-                onBackPressed();
+                moveTaskToBack(true);
+                finishAffinity();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -243,9 +237,10 @@ public class FullscreenActivity extends AppCompatActivity {
                 if (((WebView) mContentView).canGoBack()) {
                     ((WebView) mContentView).goBack();
                 } else {
+                    moveTaskToBack(true);
                     finish();
                 }
-                return true;
+                return false;
             }
 
         }
@@ -354,5 +349,6 @@ public class FullscreenActivity extends AppCompatActivity {
             createPaletteAsync(bitmapFromAsset);
         }
     }
+
 
 }

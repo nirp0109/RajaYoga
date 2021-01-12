@@ -32,7 +32,7 @@ public class WakeupReceiver extends BroadcastReceiver {
         String string = storage.getString("last", "last");
         boolean notfiy = storage.getBoolean("notify",true);
       if(notfiy && (string.equals("last") || !string.equals(format))) {
-            Intent openIntent = new Intent(context.getApplicationContext(), FullscreenActivity.class);
+            Intent openIntent = new Intent(context.getApplicationContext(), WelcomeActivity.class);
             openIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent pendingIntent = PendingIntent.getActivity(context.getApplicationContext(),0,openIntent,PendingIntent.FLAG_UPDATE_CURRENT);
             Notification.Builder builder= new Notification.Builder(context)

@@ -14,5 +14,6 @@
     <string name="info">About</string>
     <string name="setting">settings</string>
     <string name="help">help</string>
+    <string name="title_activity_welcome">FullscreenActivity</string>
 
 </resources>

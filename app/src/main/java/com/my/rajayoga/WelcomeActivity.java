@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -38,11 +40,14 @@ public class WelcomeActivity extends AppCompatActivity {
     private WebView mContentView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.FullscreenTheme);
+        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
+        } else {
+            setTheme(R.style.FullscreenTheme);
+        }
+
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         setContentView(R.layout.activity_welcome);
         mContentView = findViewById(R.id.welcome_content);

@@ -4,13 +4,22 @@ html {
 
 body{
 background-color:#F7F8FA;
- padding-right:5vh;
+padding-right:5vh;
 padding-left:5vh;
  font-family: 'Rubik', sans-serif;
  color:#535352;
  font-size: 18px;
  padding-top:7vh;
 }
+
+/*מרכוז*/
+.center-class {
+width: calc( 100vw - 60px );
+padding:0;
+/*   display: flex;*/
+  justify-content:center;
+}
+
 
 /*כרטיס */
 .card{
@@ -24,7 +33,7 @@ box-shadow:
 ;
 
  padding-right:5vh;
-  padding-left:5vh;
+   padding-left:5vh;
 padding-top:3vh;
  background-color:#FFFFFF;
 
@@ -88,19 +97,21 @@ h3{
     font-weight:bold;
 
    }
+
 .helptext{
  font-size: 18px;
        padding-top:5vh;
 }
+
 .names{
 
       padding-top:5vh;
       font-size: 14px;
       }
+
 /*דף פתיחה */
    .welcomeh1{
   padding-top:2vh;
-
    color:#CB5A09;
  font-weight:bold;
  font-size: 26px;
@@ -216,14 +227,16 @@ position:relative;
   /* Add the blur effect */
   filter: blur(10px) contrast(100%);
   -webkit-filter: blur(10px) contrast(100%);
-    width:calc(100vw - 70px);
-  /* Center and scale the image  */
+  /* Center and scale the image*/
+      width:calc(100vw - 70px);
   background-position: center;
   background-repeat:no-repeat;
   background-size: cover;
   z-index:1;
   border: solid 1.5em rgba(black,0.3);
-  background-clip:  padding-box;
+ background-clip:padding-box;
+ margin:0;
+  padding:0;
 
  }
 
@@ -267,7 +280,7 @@ position:relative;
 margin:auto;
   justify-content:center;
  border-style:solid;
-  border-color:white;
+  border-color:#ffffff;
   border-width:8px;
 }
 
@@ -288,31 +301,19 @@ margin:auto;
  margin:auto;
   justify-content:center;
  border-style:solid;
-    border-color:white;
+    border-color:#ffffff;
     border-width:8px;
 }
 
 .circular--portrait img {
   width: 100%;
+
   height: auto;
 
 }
-/*מרכוז*/
-.center-class {
-/*    width:100%;*/
-width: calc( 100vw - 60px );
-
-/*   display: flex;*/
-    justify-content:center;
-}
 
 
-/*מרכוז */
-.center-class-old {
-    width:100%;
-    display: flex;
-    justify-content:center;
-}
+
 
 
 /* גראדיאנט*/

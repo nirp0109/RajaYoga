@@ -55,7 +55,7 @@
                 time = pair[1];
             }
         }
-  setTimeout(function(){ window.location.href = nextURL; }, parseInt(time));
+  setTimeout(function(){ AndroidCallback.showDailyInstruction(); }, parseInt(time));
      function gotoPage() {
         AndroidCallback.showDailyInstruction();
     }

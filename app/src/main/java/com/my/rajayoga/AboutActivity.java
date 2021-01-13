@@ -24,6 +24,7 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         setContentView(R.layout.activity_about);
         WebView mContentView = (WebView)findViewById(R.id.about_content);
         WebSettings settings = mContentView.getSettings();

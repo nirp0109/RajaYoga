@@ -25,6 +25,7 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         setContentView(R.layout.activity_help);
         WebView mContentView = (WebView)findViewById(R.id.help_content);
         WebSettings settings = mContentView.getSettings();

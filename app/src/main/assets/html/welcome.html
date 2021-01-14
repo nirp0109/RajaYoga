@@ -55,10 +55,11 @@
                 time = pair[1];
             }
         }
-//  setTimeout(function(){ AndroidCallback.showDailyInstruction(); }, parseInt(time));
+     var timer = setTimeout(function(){ AndroidCallback.showDailyInstruction(); }, parseInt(time));
      function gotoPage() {
-     AndroidCallback.showDailyInstruction();
-    }
+        clearTimeout(timer);
+        AndroidCallback.showDailyInstruction();
+     }
 
 </script>
 <script src="js/MainAppJS.js"  type="text/javascript"></script>

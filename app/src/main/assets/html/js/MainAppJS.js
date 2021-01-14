@@ -29,18 +29,22 @@ function readMoreFunction(event) {
   var target = event.target;
   var more =  target.previousElementSibling;
   var dots = more.previousElementSibling;
-  var supportPageOffset = window.pageXOffset !== undefined;
-  var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
-  var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop
-  if (!target.hasAttribute("id")) {
-    target.setAttribute("id",y);
-  }
+// for scrolling to previous spot
+//  var supportPageOffset = window.pageXOffset !== undefined;
+//  var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+// get scroll position
+//  var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop
+// store scroll in element if not already set
+//  if (!target.hasAttribute("id")) {
+//    target.setAttribute("id",y);
+//  }
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     target.innerHTML = "קרא עוד";
     more.style.display = "none";
-    window.scroll(0,target["id"]);
+    //scroll to old position store in element
+    //window.scroll(0,target["id"]);
     } else {
     dots.style.display = "none";
     target.innerHTML = "הסתר";

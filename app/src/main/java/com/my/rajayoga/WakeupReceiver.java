@@ -16,6 +16,7 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -27,11 +28,21 @@ public class WakeupReceiver extends BroadcastReceiver {
         // an Intent broadcast.
        Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String format = sdf.format(date);
         SharedPreferences storage = context.getSharedPreferences("storage", Context.MODE_PRIVATE);
         String string = storage.getString("last", "last");
         boolean notfiy = storage.getBoolean("notify",true);
-      if(notfiy && (string.equals("last") || !string.equals(format))) {
+        String hour = storage.getString("hour", "7");
+        /* Setting the alarm here */
+        Date lastDate = null;
+        try {
+            lastDate = sdf.parse(string);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(notfiy && (string.equals("last") || lastDate!=null && date.after(lastDate))){
+            updateTimeStamp(context, string);
+            //schedule again
+            WelcomeActivity.scheduleAlaramSpecficHourInEveryDay(context, Integer.parseInt(hour));
             Intent openIntent = new Intent(context.getApplicationContext(), WelcomeActivity.class);
             openIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent pendingIntent = PendingIntent.getActivity(context.getApplicationContext(),0,openIntent,PendingIntent.FLAG_UPDATE_CURRENT);
@@ -56,5 +67,16 @@ public class WakeupReceiver extends BroadcastReceiver {
             }
            manager.notify(0, builder.build());
         }
+    }
+
+    private void updateTimeStamp(Context context, String string) {
+        SharedPreferences storage;
+        storage = context.getSharedPreferences("storage", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = storage.edit();
+        if ("last".equalsIgnoreCase(string)) {
+            edit.putBoolean("notify", true);
+        }
+        edit.putString("last", string);
+        edit.commit();
     }
 }

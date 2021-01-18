@@ -82,7 +82,7 @@ public class WelcomeActivity extends AppCompatActivity {
                                       }
         );
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String format = sdf.format(date);
         int day = Integer.parseInt(format.substring(0, 2));
         registerNotification();
@@ -115,19 +115,18 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public static void scheduleAlaramSpecficHourInEveryDay(Context context, int hour) {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        int interval = 1000 * 60 * 60 * 24;
-        /* Set the alarm to start at 7 AM */
+        /* Set the alarm to start at 7 specfic hour next day */
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, 0);
+        calendar.add(Calendar.DAY_OF_YEAR,1);
 
         Intent alarmIntent = new Intent(context.getApplicationContext(), WakeupReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         /* Repeating on every day interval */
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                interval, pendingIntent);
+        manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
     }
 
     private void updateCurrentDateAsVisted(String format) {

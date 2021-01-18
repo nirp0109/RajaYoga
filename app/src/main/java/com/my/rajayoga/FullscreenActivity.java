@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -71,7 +73,7 @@ public class FullscreenActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
-     //   mContentView.addJavascriptInterface(new CallBackFormJS(this),"AndroidCallback");
+
         mContentView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
@@ -120,11 +122,10 @@ public class FullscreenActivity extends AppCompatActivity {
         //find the day number of today and set the right url
 
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String format = sdf.format(date);
         day = Integer.parseInt(format.substring(0, 2));
         registerNotification();
-        updateCurrentDateAsVisted(format);
         ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
 
         if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
@@ -150,32 +151,18 @@ public class FullscreenActivity extends AppCompatActivity {
 
     public static void scheduleAlaramSpecficHourInEveryDay(Context context, int hour) {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        int interval = 1000 * 60 * 60 * 24;
         /* Set the alarm to start at 7 AM */
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, 0);
-
+        calendar.add(Calendar.DAY_OF_YEAR,1);
         Intent alarmIntent = new Intent(context.getApplicationContext(), WakeupReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         /* Repeating on every day interval */
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                interval, pendingIntent);
-    }
+        manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
 
-    private void updateCurrentDateAsVisted(String format) {
-        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
-        String string = storage.getString("last", "last");
-        SharedPreferences.Editor edit = storage.edit();
-        if ("last".equalsIgnoreCase(string)) {
-            edit.putBoolean("notify", true);
-            edit.putString("hour", "7");
-            edit.putBoolean("welcome", true);
-        }
-        edit.putString("last", format);
-        edit.commit();
     }
 
     @Override

@@ -125,12 +125,11 @@ public class FullscreenActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String format = sdf.format(date);
         day = Integer.parseInt(format.substring(0, 2));
-        registerNotification();
         ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
 
-        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+//        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
          //   getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+//        }
 
 
         //        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
@@ -138,16 +137,6 @@ public class FullscreenActivity extends AppCompatActivity {
 //        toast.show();
     }
 
-    private void registerNotification() {
-        SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
-        boolean notify = storage.getBoolean("notify", true);
-        //since register before update date see if created otherwise result is last
-        if (notify) {
-            Context context = this;
-            int hour = Integer.parseInt(storage.getString("hour", "7"));
-            scheduleAlaramSpecficHourInEveryDay(context, hour);
-        }
-    }
 
     public static void scheduleAlaramSpecficHourInEveryDay(Context context, int hour) {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

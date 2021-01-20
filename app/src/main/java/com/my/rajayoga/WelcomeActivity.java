@@ -133,13 +133,13 @@ public class WelcomeActivity extends AppCompatActivity {
         SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
         String string = storage.getString("last", "last");
         SharedPreferences.Editor edit = storage.edit();
-        if ("last".equalsIgnoreCase(string)) {
+        if ("last".equalsIgnoreCase(string)) {// first time
             edit.putBoolean("notify", true);
             edit.putString("hour", "7");
             edit.putBoolean("welcome", true);
+            edit.commit();
         }
-        edit.putString("last", format);
-        edit.commit();
+
     }
 
     /**

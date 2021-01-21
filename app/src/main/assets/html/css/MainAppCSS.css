@@ -116,12 +116,12 @@ h3{
 
 /*דף פתיחה */
    .welcomeh1{
-  padding-top:3vh;
+
    color:#CB5A09;
  font-weight:bold;
  font-size: 26px;
   text-align: center;
-  padding-top:10vh;
+  padding-top:8vh;
    }
 
  .welcomeh2{
@@ -134,9 +134,15 @@ h3{
       color:black;
     font-size: 18px;
      text-align: center;
-     padding-top:5vh;
+     padding-top:3vh;
+     padding-right:8vh;
+     padding-left:8vh;
       }
+.welcomeButtonLocation{
+padding-top:2vh;
+padding-bottom:5vh;
 
+}
 .welcomebutton{
 
      background-color: Transparent;
@@ -145,7 +151,7 @@ h3{
      overflow: hidden;
 border: 1px solid #CB5A09;;
      display: inline-block;
-     	padding: 12px 12px;
+     	padding: 10px 10px;
      	color: #CB5A09;
      	text-decoration: none;
      	font-size: 18px;

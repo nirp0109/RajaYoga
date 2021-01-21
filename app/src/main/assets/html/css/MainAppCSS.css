@@ -222,7 +222,7 @@ display: none;
 .header img {
 position:relative;
 width: 100%;
-  height: 100%;
+ /* height: 100%;*/
   background-position: center;
  z-index:1;
  }
@@ -230,7 +230,7 @@ width: 100%;
 .header-old img {
 position:relative;
   width: 100%;
-  height: auto;
+ /* height: auto;*/
     background-position: center;
  z-index:1;
 
@@ -248,14 +248,8 @@ height:7vh;
    margin:0;
   background-position: center;
   background-repeat:no-repeat;
-  /*background-size: cover;*/
-background-size: cover;
+background-size:cover;
   z-index:1;
-
-
-
-
-
  }
 
 
@@ -264,7 +258,7 @@ background-size: cover;
     position: absolute;
     top: 0;
     width:100%;
-    height:120px;
+    height:160px;
     z-index: 10;
 
 

@@ -134,9 +134,9 @@ public class WelcomeActivity extends AppCompatActivity {
         String string = storage.getString("last", "last");
         SharedPreferences.Editor edit = storage.edit();
         if ("last".equalsIgnoreCase(string)) {// first time
-            edit.putBoolean("notify", true);
-            edit.putString("hour", "7");
-            edit.putBoolean("welcome", true);
+            edit.putBoolean("notify", storage.getBoolean("notify", true));
+            edit.putString("hour", storage.getString("hour", "7"));
+            edit.putBoolean("welcome", storage.getBoolean("welcome", true));
             edit.commit();
         }
 

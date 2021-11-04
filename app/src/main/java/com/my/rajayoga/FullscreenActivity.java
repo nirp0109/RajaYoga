@@ -125,7 +125,11 @@ public class FullscreenActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String format = sdf.format(date);
         day = Integer.parseInt(format.substring(0, 2));
-        ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
+        if (savedInstanceState == null)
+        {
+            ((WebView) mContentView).loadUrl("file:///android_asset/html/day" + day + ".html");
+        }
+
 
 //        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
          //   getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -317,5 +321,21 @@ public class FullscreenActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState )
+    {
+        super.onSaveInstanceState(outState);
+        if(mContentView!=null) {
+            mContentView.saveState(outState);
+        }
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(mContentView!=null) {
+            mContentView.restoreState(savedInstanceState);
+        }
+    }
 }

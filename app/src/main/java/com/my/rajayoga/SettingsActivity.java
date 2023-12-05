@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -84,9 +85,17 @@ public class SettingsActivity extends AppCompatActivity {
             Context context = getContext();
             if(context!=null) {
                 Intent alarmIntent = new Intent(context.getApplicationContext(), WakeupReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-                manager.cancel(pendingIntent);
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+                    AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+                    manager.cancel(pendingIntent);
+                }
+                else {
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+                    manager.cancel(pendingIntent);
+                }
+
             }
         }
 

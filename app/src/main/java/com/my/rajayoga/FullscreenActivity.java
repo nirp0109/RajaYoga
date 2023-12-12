@@ -151,7 +151,7 @@ public class FullscreenActivity extends AppCompatActivity {
         calendar.set(Calendar.MINUTE, 0);
         calendar.add(Calendar.DAY_OF_YEAR,1);
         Intent alarmIntent = new Intent(context.getApplicationContext(), WakeupReceiver.class);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
             manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }

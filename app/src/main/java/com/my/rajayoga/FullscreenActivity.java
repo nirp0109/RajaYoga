@@ -64,9 +64,11 @@ public class FullscreenActivity extends AppCompatActivity {
             setTheme(R.style.FullscreenTheme);
         }
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayUseLogoEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 //        final ProgressDialog pd = ProgressDialog.show(FullscreenActivity.this, "", getString(R.string.loading_indicator),true);
         setContentView(R.layout.activity_fullscreen);
         mContentView = (WebView)findViewById(R.id.fullscreen_content);

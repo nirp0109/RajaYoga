@@ -15,6 +15,9 @@ import android.graphics.Color;
 import android.os.Build;
 import android.provider.Settings;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,28 +53,21 @@ public class WakeupReceiver extends BroadcastReceiver {
             //schedule again
             WelcomeActivity.scheduleAlaramSpecficHourInEveryDay(context, Integer.parseInt(hour));
             Intent openIntent = new Intent(context.getApplicationContext(), WelcomeActivity.class);
-            openIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context.getApplicationContext(),0,openIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-            Notification.Builder builder= new Notification.Builder(context)
-                .setSmallIcon(R.drawable.ic_trailanga_swami) //set icon for notification
-                .setContentTitle(context.getString(R.string.content_title)) //set title of notification
-                .setContentText(context.getString(R.string.content_text))//this is notification message
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true); // makes auto cancel of notification
+            openIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context.getApplicationContext(),0,openIntent,PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "YamNiamWakeup")
+                    .setSmallIcon(R.drawable.ic_trailanga_swami)
+                    .setContentTitle(context.getString(R.string.content_title))
+                    .setContentText(context.getString(R.string.content_text))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentIntent(pendingIntent)
+                    .setVibrate(new long[]{0, 1000, 1000, 1000})
+                    .setAutoCancel(true);
 
-            NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
-            {
-                builder.setChannelId("YamNiamWakeup");
-                int importance = NotificationManager.IMPORTANCE_HIGH;
-                NotificationChannel notificationChannel = new NotificationChannel("YamNiamWakeup", "NOTIFICATION_CHANNEL_NAME", importance);
-                notificationChannel.enableLights(true);
-                notificationChannel.setLightColor(Color.RED);
-                notificationChannel.enableVibration(true);
-                notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
-                manager.createNotificationChannel(notificationChannel);
-            }
-           manager.notify(0, builder.build());
+
+            NotificationManagerCompat  notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.notify(this.hashCode(), builder.build());
         }
     }
 

@@ -118,7 +118,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public static void scheduleAlaramSpecficHourInEveryDay(Context context, int hour) {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        /* Set the alarm to start at 7 specfic hour next day */
+        /* Set the alarm to start at a specfic hour next day */
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);

@@ -19,6 +19,8 @@
         <activity
             android:name=".WelcomeActivity"
             android:exported="true"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
             >
             <intent-filter>

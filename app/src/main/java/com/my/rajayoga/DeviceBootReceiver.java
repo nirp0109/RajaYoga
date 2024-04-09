@@ -13,7 +13,7 @@ public class DeviceBootReceiver extends BroadcastReceiver {
             SharedPreferences storage = context.getSharedPreferences("storage", Context.MODE_PRIVATE);
             String hour = storage.getString("hour", "7");
             /* Setting the alarm here */
-            WelcomeActivity.scheduleAlaramSpecficHourInEveryDay(context, Integer.parseInt(hour));
+            FullscreenActivity.scheduleAlaramSpecficHourInEveryDay(context, Integer.parseInt(hour));
   //      }
     }
 }

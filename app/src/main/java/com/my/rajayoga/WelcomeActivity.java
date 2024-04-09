@@ -6,6 +6,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -93,6 +95,18 @@ public class WelcomeActivity extends AppCompatActivity {
 
         SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);
         boolean welcome = storage.getBoolean("welcome", true);
+
+        // Create the NotificationChannel
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("YamNiamWakeup", name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
         if(welcome) {
             ((WebView) mContentView).loadUrl("file:///android_asset/html/welcome.html?page=day" + day + ".html&wait=10000");
         }
@@ -112,47 +126,10 @@ public class WelcomeActivity extends AppCompatActivity {
         if (notify) {
             Context context = this;
             int hour = Integer.parseInt(storage.getString("hour", "7"));
-            scheduleAlaramSpecficHourInEveryDay(context, hour);
+            FullscreenActivity.scheduleAlaramSpecficHourInEveryDay(context, hour);
         }
     }
 
-    public static void scheduleAlaramSpecficHourInEveryDay(Context context, int hour) {
-        AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        /* Set the alarm to start at a specfic hour next day */
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.add(Calendar.DAY_OF_YEAR,1);
-
-        Intent alarmIntent = new Intent(context.getApplicationContext(), WakeupReceiver.class);
-        //if android api version 31 and more add  flag PendingIntent.FLAG_IMMUTABLE and PendingIntent.FLAG_UPDATE_CURRENT
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if(manager.canScheduleExactAlarms()) {
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-                manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-            } else {
-                //request permission for exact alarm
-                context.registerReceiver(new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        if (intent.getAction() == AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED) {
-                            PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-                            manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-                        }
-
-                    }
-                }, new IntentFilter(AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED));
-                context.startActivity(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM));
-
-            }
-        }
-        else {
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            manager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        }
-
-    }
 
     private void updateCurrentDateAsVisted(String format) {
         SharedPreferences storage = getSharedPreferences("storage", Context.MODE_PRIVATE);

@@ -15,5 +15,7 @@
     <string name="setting">settings</string>
     <string name="help">help</string>
     <string name="title_activity_welcome">FullscreenActivity</string>
+    <string name="channel_name">Yam Niam</string>
+    <string name="channel_description">Daily reminder to read the daily instruction</string>
 
 </resources>

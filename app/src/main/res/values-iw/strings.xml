@@ -15,6 +15,8 @@
     <string name="info">אודות</string>
     <string name="setting">הגדרות</string>
     <string name="help">עזרה</string>
+    <string name="channel_name">יאם ניאם</string>
+    <string name="channel_description">תזכורת יומית לקרוא את הנחיות היום</string>
 
 
 </resources>

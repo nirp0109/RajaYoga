@@ -16,6 +16,8 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.text.SimpleDateFormat;
+
 
 public class WakeupReceiver extends BroadcastReceiver {
 
@@ -26,6 +28,26 @@ public class WakeupReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d("WakeupReceiver", "onReceive: " + intent.getAction());
+        //find if already got a notification for this day and hour
+        //get the hour in the intent
+        int notify_hour = intent.getIntExtra("hour", 0);
+        //get current date and convert to string
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+        //concatenate date and hour
+        String key = date + "-" + notify_hour;
+        //get the storage
+        SharedPreferences storage = context.getSharedPreferences("storage", Context.MODE_PRIVATE);
+        //get the value of the last notification
+        boolean notified = storage.getString("LAST_NOTIFICATION", "").equalsIgnoreCase(key);
+        //if already notified return
+        if (notified) {
+            return;
+        } else {
+            //set the value of the key to true
+            storage.edit().putString("LAST_NOTIFICATION", key).apply();
+        }
+
+
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             Log.d("WakeupReceiver", "in onReceive >CODE.S: " + alarmManager.canScheduleExactAlarms());
@@ -34,8 +56,6 @@ public class WakeupReceiver extends BroadcastReceiver {
                 context.startActivity(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM));
             }
         }
-        // an Intent broadcast.
-        SharedPreferences storage = context.getSharedPreferences("storage", Context.MODE_PRIVATE);
 
         boolean notify = storage.getBoolean("notify", true);
         String hour = storage.getString("hour", "7");

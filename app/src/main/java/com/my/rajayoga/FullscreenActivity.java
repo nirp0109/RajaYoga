@@ -154,10 +154,12 @@ public class FullscreenActivity extends AppCompatActivity {
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, 0);
         Intent alarmIntent = new Intent(context.getApplicationContext(), WakeupReceiver.class);
+        //set the hour in the intent
+        alarmIntent.putExtra("hour", hour);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if(manager.canScheduleExactAlarms()) {
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-                manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY ,pendingIntent);
+                manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY ,pendingIntent);
             } else {
                 //request permission for exact alarm
                 context.registerReceiver(new BroadcastReceiver() {
@@ -165,7 +167,7 @@ public class FullscreenActivity extends AppCompatActivity {
                     public void onReceive(Context context, Intent intent) {
                         if (intent.getAction() == AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED) {
                             PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-                            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY ,pendingIntent);
+                            manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY ,pendingIntent);
                         }
 
                     }

@@ -62,7 +62,7 @@ public class WakeupReceiver extends BroadcastReceiver {
         Log.d("WakeupReceiver", "onReceive: notify: " + notify + " hour: " + hour);
         if (notify ) {
             //schedule again
-//            FullscreenActivity.scheduleAlaramSpecficHourInEveryDay(context, Integer.parseInt(hour));
+            FullscreenActivity.scheduleAlaramSpecficHourInEveryDay(context, Integer.parseInt(hour));
             //CREATE NOTIFICATION
             Intent openIntent = new Intent(context.getApplicationContext(), WelcomeActivity.class);
             openIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK

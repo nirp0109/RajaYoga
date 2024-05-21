@@ -150,6 +150,9 @@ public class FullscreenActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         /* Set the alarm to start at 7 AM */
         Calendar calendar = Calendar.getInstance();
+        //get today hour
+        int todayHour = calendar.get(Calendar.HOUR_OF_DAY);
+
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, 0);
@@ -157,10 +160,8 @@ public class FullscreenActivity extends AppCompatActivity {
         //set the hour in the intent
         alarmIntent.putExtra("hour", hour);
         //if hour is passed then schedule for next day
-        //get today hour
-        int todayHour = calendar.get(Calendar.HOUR_OF_DAY);
         //if today hour is more than the notify hour then schedule for next day
-        if(todayHour>hour) {
+        if(todayHour>=hour) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 

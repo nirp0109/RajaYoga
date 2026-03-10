@@ -14,8 +14,9 @@
     <string name="info">About</string>
     <string name="setting">settings</string>
     <string name="help">help</string>
-    <string name="title_activity_welcome">FullscreenActivity</string>
+
     <string name="channel_name">Yam Niam</string>
     <string name="channel_description">Daily reminder to read the daily instruction</string>
+    <string name="please_allow_exact_alarm">Please allow exact alarm permission for Yam Nima</string>
 
 </resources>

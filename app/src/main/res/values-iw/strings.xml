@@ -17,6 +17,7 @@
     <string name="help">עזרה</string>
     <string name="channel_name">יאם ניאם</string>
     <string name="channel_description">תזכורת יומית לקרוא את הנחיות היום</string>
+    <string name="please_allow_exact_alarm">בבקשה אשר תזכורת לניאם יאם</string>
 
 
 </resources>

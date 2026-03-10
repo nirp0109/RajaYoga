@@ -174,17 +174,28 @@ public class FullscreenActivity extends AppCompatActivity {
 //                manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY ,pendingIntent);
             } else {
                 //request permission for exact alarm
-                context.registerReceiver(new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        if (intent.getAction() == AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED) {
-                            PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-                            manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-                        }
+                //find if the context is activity or not
+                //if the context is activity then request permission
+                //if the context is not activity then show toast
+                //get message from string resource
+                String toastMessage = context.getResources().getString(R.string.please_allow_exact_alarm);
+                if(context instanceof FullscreenActivity) {
+                    Toast.makeText(context, toastMessage, Toast.LENGTH_LONG).show();
+                    context.registerReceiver(new BroadcastReceiver() {
+                        @Override
+                        public void onReceive(Context context, Intent intent) {
+                            if (intent.getAction() == AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED) {
+                                PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+                                manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                            }
 
-                    }
-                }, new IntentFilter(AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED));
-                context.startActivity(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM));
+                        }
+                    }, new IntentFilter(AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED));
+                    context.startActivity(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM));
+
+                } else {
+                    Toast.makeText(context, toastMessage, Toast.LENGTH_LONG).show();
+                }
 
             }
         }
@@ -304,6 +315,8 @@ public class FullscreenActivity extends AppCompatActivity {
             }
             return true;
         }
+
+
     }
 
     public void createPaletteAsync(Bitmap bitmap) {
